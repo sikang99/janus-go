@@ -1,40 +1,19 @@
 #
-# Makefile for js-example
+# Makefile for janus-go
 #
 .PHONY: usage edit build run clean git
 #----------------------------------------------------------------------------------
 usage:
-	@echo "usage: make [down|build|install|run]"
+	@echo "usage: make [edit|git]"
 #----------------------------------------------------------------------------------
-VERSION=0.8.0
-down d:
-	wget https://github.com/meetecho/janus-gateway/archive/v$(VERSION).tar.gz
-	tar xvzf v$(VERSION).tar.gz
+edit e:
+	vi janus.go
 
-build b:
-	cd janus-gateway-$(VERSION); \
-		./autogen.sh; \
-		./configure --prefix=/usr/local/janus --enable-post-processing PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig; \
-		make
+edit-test et:
+	vi janus_test.go
 
-install:
-	cd janus-gateway-$(VERSION); \
-		sudo make install; \
-		sudo make configs
-
-run r:
-	/usr/local/janus/bin/janus
-
-web w:
-	open http://localhost:8080
-	simplehttpserver
-
-kill k:
-	pkill simplehttpserver
-
-clean:
-	rm -f v$(VERSION).tar.gz
-	rm -rf janus-gateway-$(VERSION)
+test t:
+	go test -v
 #----------------------------------------------------------------------------------
 git g:
 	@echo "> make (git:g) [update|store]"
