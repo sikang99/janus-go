@@ -79,6 +79,7 @@ func (gateway *Gateway) send(msg map[string]interface{}, transaction chan interf
 	gateway.transactions[id] = transaction
 	gateway.Unlock()
 
+	//data, err := json.MarshalIndent(msg, "", "   ")
 	data, err := json.Marshal(msg)
 	if err != nil {
 		fmt.Printf("json.Marshal: %s\n", err)
