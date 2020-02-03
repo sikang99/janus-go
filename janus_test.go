@@ -7,7 +7,8 @@ import (
 func Test_Connect(t *testing.T) {
 
 	//client, err := Connect("ws://39.106.248.166:8188/")
-	client, err := Connect("ws://localhost:8188/")
+	//client, err := Connect("ws://localhost:8188/")
+	client, err := Connect("ws://janus.cojam.shop:8188/")
 	if err != nil {
 		t.Fail()
 		return
