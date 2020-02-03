@@ -148,7 +148,7 @@ func (gateway *Gateway) recv() {
 
 		typeFunc, ok := msgtypes[base.Type]
 		if !ok {
-			fmt.Printf("Unknown message type received!\n")
+			log.Printf("Unknown message type received!\n")
 			continue
 		}
 
